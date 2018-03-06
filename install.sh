@@ -1,7 +1,7 @@
 #!/bin/bash
 
 files="bashrc vimrc zshrc Xresources"
-configfiles="i3 polybar"
+configfiles="i3 polybar termite"
 
 for file in $files; do
 	ln -s ~/dotfiles/$file ~/.$file
