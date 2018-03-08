@@ -21,11 +21,11 @@ alert = #bd2c40
 [bar/example]
 monitor = ${env:MONITOR:}
 width = 100%
-height = 27
+height = 36
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 6.0
-fixed-center = false
+radius = 0.0
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -33,8 +33,8 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 4
-border-color = #00000000
+border-size = 0
+border-color = #000
 
 padding-left = 0
 padding-right = 2
@@ -42,13 +42,14 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-0 = DejaVu Sans:pixelsize=12;1
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=14;1"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=14;1"
+font-3 = "Font Awesome 5 Brands:pixelsize=14;1"
 
-modules-left = bspwm i3
-modules-center = 
-modules-right = filesystem xbacklight volume xkeyboard memory cpu battery temperature date powermenu
+modules-left = i3
+modules-center = xwindow
+modules-right = xbacklight volume battery date
 
 tray-position = right
 tray-padding = 2
@@ -125,30 +126,36 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
+ws-icon-0 = firefox;
+ws-icon-1 = spotify;
+ws-icon-2 = discord;
+ws-icon-3 = terminal;
+ws-icon-default = 
+
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %icon%  %name%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %icon%  %name%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %icon%  %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %icon%  %name%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
@@ -248,7 +255,7 @@ interval = 5
 date =
 date-alt = " %Y-%m-%d"
 
-time = %H:%M
+time = %I:%M %p
 time-alt = %H:%M:%S
 
 format-prefix = 
